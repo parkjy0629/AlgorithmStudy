@@ -5,7 +5,7 @@ package Chap03;
 import java.util.Scanner;
 
 public class SeqSearchSen {
-    // 요솟수가 n인 배열 a에서 key와 같은 요소를 보초버으로 선형 검색한다.
+    // 요솟수가 n인 배열 a에서 key와 같은 요소를 보초버으로 선형 검색
     static int seqSearchSen (int[] x, int n, int k) {
         int i = 0;
 

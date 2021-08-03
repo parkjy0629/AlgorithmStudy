@@ -3,7 +3,7 @@ import java.util.Scanner;
 // 선형 검색
 
 public class SeqSearchFor {
-    // 요솟수가 n인 배열 a에서 key와 같은 요소를 선형 검색한다
+    // 요솟수가 n인 배열 a에서 key와 같은 요소를 선형 검색
     static int seqSearch (int[]a, int n, int k) {
         for (int i = 0; i < n; i++) {
             if (a[i] == k)

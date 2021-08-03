@@ -44,7 +44,7 @@ public class BinSearch {
         System.out.print("검색할 값 : ");   // 키 값을 입력
         int key = stdIn.nextInt();
 
-        int idx = binSearch(x, num, key);       // 배열 x에서 키 값이 key인 요소를 검색
+        int idx = binSearch(x, num, key);       // 배열 x에서 키 값이 key 요소를 검색
 
         if (idx == -1) {
             System.out.println("그 값의 요소가 없습니다.");
