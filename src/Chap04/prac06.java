@@ -1,38 +1,37 @@
 package Chap04;
-// int형 큐
 
-public class IntQueue {
+public class prac06<E> {
     private int max;            // 큐의 용량
     private int front;          // 첫 번째 요소 커서
     private int rear;           // 마지막 요소 커서
     private int num;            // 현재 데이터 수
-    private int[] que;          // 큐 본체
-    
+    private E[] que;          // 큐 본체
+
     // 실행 시 예외 : 큐가 비어있음
-    public class EmptyIntQueueException extends RuntimeException {
+    public static class EmptyIntQueueException extends RuntimeException {
         public EmptyIntQueueException() {}
     }
-    
+
     // 실행 시 예외 : 큐가 가득 참
-    public class OverflowIntQueueException extends RuntimeException {
+    public static class OverflowIntQueueException extends RuntimeException {
         public OverflowIntQueueException() {}
     }
-    
+
     // 생성자
-    public IntQueue(int capacity) {
+    public prac06(int capacity) {
         num = front = rear = 0;
         max = capacity;
         try {
-            que = new int[max];         // 큐 본체용 배열 생성
+            que = (E[]) new Object();         // 큐 본체용 배열 생성
         } catch (OutOfMemoryError e) {  // 생성할 수 없음
             max = 0;
         }
     }
 
     // 큐에 데이터를 인큐
-    public int enque(int x) throws OverflowIntQueueException {
+    public E enque(E x) throws prac06.OverflowIntQueueException {
         if (num >= max)
-            throw new OverflowIntQueueException();      // 큐가 가득참
+            throw new prac06.OverflowIntQueueException();      // 큐가 가득참
 
         que[rear++] = x;
         num++;
@@ -44,32 +43,32 @@ public class IntQueue {
     }
 
     // 큐에 데이터를 디큐
-    public int deque() throws EmptyIntQueueException {
+    public E deque() throws prac06.EmptyIntQueueException {
         if (num <= 0)
-            throw new EmptyIntQueueException();         // 큐가 비어있음
-        
-        int x = que[front++];
+            throw new prac06.EmptyIntQueueException();         // 큐가 비어있음
+
+        E x = que[front++];
         num--;
-        
+
         if (front == max)
             front = 0;
-        
+
         return x;
     }
-    
+
     // 큐에서 데이터를 피크(프런트 데이터를 들여다봄)
-    public int peek() throws EmptyIntQueueException {
+    public E peek() throws prac06.EmptyIntQueueException {
         if (num <= 0)
-            throw new EmptyIntQueueException();         // 큐가 비어있음
-        
+            throw new prac06.EmptyIntQueueException();         // 큐가 비어있음
+
         return que[front];
     }
-    
+
     // 큐에서 x를 검색하여 인덱스(찾지 못하면 -1)를 반환
     public int indexOf(int x) {
         for (int i = 0; i < num; i++) {
             int idx = (i + front) % max;
-            if (que[idx] == x)                          // 검색 성공
+            if (que[idx].equals(x))                          // 검색 성공
                 return idx;
         }
         return -1;                                      // 검색 실패
@@ -111,5 +110,16 @@ public class IntQueue {
             }
             System.out.println();
         }
+    }
+
+    // 임의의 데이터 검색 (해당 데이터가 몇번째 데이터인지 / 인덱스 X)
+    public int search(int x) {
+        for (int i = 0; i < num; i++) {
+            int idx = (i + front) % max;
+            if (que[idx].equals(x)) {
+                return idx + 1;
+            }
+        }
+        return -1;
     }
 }
