@@ -56,7 +56,6 @@ public class prac04 {
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
 
-        System.out.println("버블 정렬(버전 1)");
         System.out.print("오솟수 : ");
         int n = stdIn.nextInt();
         int[] x = new int[n];

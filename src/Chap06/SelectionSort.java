@@ -2,32 +2,29 @@ package Chap06;
 
 import java.util.Scanner;
 
-public class BubbleSort3 {
+public class SelectionSort {
     static void swap (int[] x, int idx1, int idx2) {
         int temp = x[idx1];
         x[idx1] = x[idx2];
         x[idx2] = temp;
     }
     
-    static void bubbleSort (int[] x, int n) {
-        int k = 0;                      // a[k]보다 앞쪽은 정렬을 마친 상태
-
-        while (k < n - 1) {
-            int last = n - 1;           // 마지막으로 요소를 교환한 위치
-            for (int j = n - 1; j > k; j--) {
-                if (x[j - 1] > x[j]) {
-                    swap(x, j - 1, j);
-                    last = j;
+    static void selectionSort (int[] x, int n) {
+        for (int i = 0; i < n - 1; i++) {
+            int min = i;            // 아직 정렬되지 않은 부분에서 가장 작은 요소의 인덱스를 기록
+            for (int j = i + 1; j < n; j++) {
+                if (x[j] < x[min]) {
+                    min = j;
                 }
             }
-            k = last;
+            swap(x, i, min);        // 아직 정렬되지 않은 부분의 첫요소와 가장 작은 요소를 교환
         }
     }
 
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
 
-        System.out.println("버블 정렬(버전 3)");
+        System.out.println("단순 선택 정렬");
         System.out.print("오솟수 : ");
         int n = stdIn.nextInt();
         int[] x = new int[n];
@@ -37,7 +34,7 @@ public class BubbleSort3 {
             x[i] = stdIn.nextInt();
         }
 
-        bubbleSort(x, n);
+        selectionSort(x, n);
 
         System.out.println("오름차순으로 정렬했습니다.");
         for (int i = 0; i < n; i++) {
