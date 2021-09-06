@@ -28,21 +28,21 @@ public class Partition {
         System.out.println("피벗의 값은 " + x + " 입니다.");
 
         System.out.println("피벗 이하의 그룹");
-        for (int i = 0; i < pl; i++) {
+        for (int i = 0; i < pl; i++) {                          // a[0] ~ a[pl - 1]
             System.out.print(a[i] + " ");
         }
         System.out.println();
 
         if (pl > pr + 1) {
             System.out.println("피벗과 일치하는 그룹");
-            for (int i = pr + 1; i <= pl - 1; i++) {
+            for (int i = pr + 1; i <= pl - 1; i++) {            // a[pr + 1] ~ a[n - 1]
                 System.out.print(a[i] + " ");
             }
             System.out.println();
         }
 
         System.out.println("피벗 이상의 그룹");
-        for (int i = pr + 1; i < n; i++) {
+        for (int i = pr + 1; i < n; i++) {                      // a[pr + 1] ~ a[n - 1]
             System.out.print(a[i] + " ");
         }
         System.out.println();
@@ -61,6 +61,6 @@ public class Partition {
             x[i] = stdIn.nextInt();
         }
 
-        partition(x, nx);
+        partition(x, nx);                   // 배열 x를 나눈다.
     }
 }
