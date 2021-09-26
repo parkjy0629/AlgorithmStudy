@@ -105,12 +105,13 @@ public class AryLinkedList<E> {
 
             while (n[ptr].next != NULL) {
                 ptr = n[ptr].next;
-                int rec = getInsertIndex();
+            }
 
-                if (rec != NULL) {              // 인덱스 rec인 record에 삽인
-                    n[ptr].next = crnt = rec;
-                    n[rec].set(obj, NULL);
-                }
+            int rec = getInsertIndex();
+
+            if (rec != NULL) {              // 인덱스 rec인 record에 삽입
+                n[ptr].next = crnt = rec;
+                n[rec].set(obj, NULL);
             }
         }
     }
